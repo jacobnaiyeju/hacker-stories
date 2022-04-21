@@ -31,14 +31,29 @@ function getTitle(name){
 function App(){
     return(      
       <div>
-      <h1>My Hacker Stories</h1>  
-      <label htmlFor="search">Seach: <input id="search" type="text"/></label>
+      <Search/>
       <hr/>
-      <ul>
-      {mylist.map(getTitle)}
-      </ul>
+      <List/>
       </div>
     );
+}
+
+function Search(){
+  return(
+    <div>
+      <h1>My Hacker Stories</h1>  
+      <label htmlFor="search">Seach:</label>
+      <input id="search" type="text"/>
+    </div>
+  );
+}
+
+function List(){
+  return(
+    <ul>
+      {mylist.map(getTitle)}
+      </ul>
+  );
 }
 
 export default App;
