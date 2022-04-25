@@ -1,43 +1,36 @@
 import * as React from 'react';
 
-const mylist=[
-  {
-    title:'React',
-    url:'https://reactjs.org/',
-    author:'Jordan Walke',
-    num_comments:3,
-    points:4,
-    objectId:0
-  },
-  {
-    title:'Redux',
-    url:'https://redux.js.org/',
-    author:'Dan Abamov, Andrew Clark',
-    num_comments:2,
-    points:5,
-    objectId:1
-  }
-];
+const App = () => {
+  const stories=[
+    {
+      title:'React',
+      url:'https://reactjs.org/',
+      author:'Jordan Walke',
+      num_comments:3,
+      points:4,
+      objectId:0
+    },
+    {
+      title:'Redux',
+      url:'https://redux.js.org/',
+      author:'Dan Abamov, Andrew Clark',
+      num_comments:2,
+      points:5,
+      objectId:1
+    }
+  ];
 
-const getTitle = (name) => {
-  return <li key={name.objectId}>
-    <span><a href={name.url}>{name.title}</a></span>
-    <span>{name.author}</span>
-    <span>{name.num_comments}</span>
-    <span>{name.points}</span>
-  </li>;
-}
-
-const App = () => {return(      
+  return(      
       <div>
         <h1>My Hacker Stories</h1>  
         <Search/>
         <hr/>
-        <List/>
+        <List list={stories}/>
         <hr/>
-        <List/>
+        <List list={stories}/>
       </div>
-    );}
+    );
+  }
 
 const Search = () =>  {
   const handleBlur = (event) => {
@@ -58,11 +51,25 @@ const Search = () =>  {
   );
 }
 
-const List = () => {
+const List = (props) => {
   return(
     <ul>
-      {mylist.map(getTitle)}
-      </ul>
+      {props.list.map((item) => {
+        return <Item key={item.objectId} item={item}>
+        </Item>;
+      })}
+    </ul>
+  );
+}
+
+const Item = (props) => {
+  return(
+    <li>
+      <span><a href={props.item.url}>{props.item.title}</a></span>
+      <span>{props.item.author}</span>
+      <span>{props.item.num_comments}</span>
+      <span>{props.item.points}</span>
+    </li>
   );
 }
 
