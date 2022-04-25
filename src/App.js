@@ -19,7 +19,7 @@ const mylist=[
   }
 ];
 
-function getTitle(name){
+const getTitle = (name) => {
   return <li key={name.objectId}>
     <span><a href={name.url}>{name.title}</a></span>
     <span>{name.author}</span>
@@ -28,27 +28,27 @@ function getTitle(name){
   </li>;
 }
 
-function App(){
-    return(      
+const App = () => {return(      
       <div>
-      <Search/>
-      <hr/>
-      <List/>
+        <h1>My Hacker Stories</h1>  
+        <Search/>
+        <hr/>
+        <List/>
+        <hr/>
+        <List/>
       </div>
-    );
-}
+    );}
 
-function Search(){
+const Search = () =>  {
   return(
     <div>
-      <h1>My Hacker Stories</h1>  
       <label htmlFor="search">Seach:</label>
       <input id="search" type="text"/>
     </div>
   );
 }
 
-function List(){
+const List = () => {
   return(
     <ul>
       {mylist.map(getTitle)}
