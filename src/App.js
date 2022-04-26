@@ -19,39 +19,39 @@ const App = () => {
       objectId:1
     }
   ];
-
+  console.log('App renders');
   return(      
-      <div>
-        <h1>My Hacker Stories</h1>  
-        <Search/>
-        <hr/>
-        <List list={stories}/>
-        <hr/>
-        <List list={stories}/>
-      </div>
-    );
-  }
+    <div>
+      <h1>My Hacker Stories</h1>  
+      <Search/>
+      <hr/>
+      <List list={stories}/>
+    </div>
+  );
+}
 
 const Search = () =>  {
+  const [searchTerm, setSearchTerm] = React.useState('');
+
   const handleBlur = (event) => {
-    console.log(event);
-    console.log(event.target.value);
+    
   }
 
   const handleChange = (event) => {
-    console.log(event);
-    console.log(event.target.value);
+    setSearchTerm(event.target.value);
   }
-
+  console.log('Search renders');
   return(
     <div>
       <label htmlFor="search">Seach:</label>
       <input id="search" type="text" onChange={handleChange} onBlur={handleBlur}/>
+      <p>Searching for <strong>{searchTerm}</strong></p>
     </div>
   );
 }
 
 const List = (props) => {
+  console.log('List renders');
   return(
     <ul>
       {props.list.map((item) => {
